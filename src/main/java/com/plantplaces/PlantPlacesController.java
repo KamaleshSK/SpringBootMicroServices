@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.plantplaces.dto.SpecimenDTO;
@@ -22,6 +23,14 @@ public class PlantPlacesController {
 	@GetMapping(value="/start")
 	public String read(Model model) {
 		SpecimenDTO specimenDTO = specimenServiceStub.fetchById(43);
+		model.addAttribute("specimenDTO", specimenDTO);
+		return "start";
+	}
+	
+	@GetMapping(value="/addspecimen")
+	public String addSpecimen(Model model, @RequestParam(value="id", required=false, defaultValue="0") int specimenID) {
+		SpecimenDTO specimenDTO = specimenServiceStub.fetchById(43);
+		specimenDTO.setSpecimenID(specimenID);
 		model.addAttribute("specimenDTO", specimenDTO);
 		return "start";
 	}
