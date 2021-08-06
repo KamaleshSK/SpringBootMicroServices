@@ -37,5 +37,15 @@ public class SpecimenDTO {
 		return specimenID + " " + latitude + " " + longitude + " " + description;
 	}
 	
+	public boolean equals(Object obj) {
+		//assume they dont match
+		boolean returnValue = false;
+		if (obj instanceof SpecimenDTO) {
+			SpecimenDTO incomingSpecimen = (SpecimenDTO) obj;
+			returnValue = incomingSpecimen.getSpecimenID() == getSpecimenID();
+		}
+		return returnValue;
+	}
+	
 	
 }

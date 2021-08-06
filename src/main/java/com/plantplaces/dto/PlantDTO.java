@@ -1,6 +1,6 @@
 package com.plantplaces.dto;
 
-public class plantDTO {
+public class PlantDTO {
 	
 	private int guid;
 	private String genus;
