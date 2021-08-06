@@ -15,7 +15,6 @@ import com.plantplaces.dto.SpecimenDTO;
 @Component
 public class SpecimenServiceStub implements ISpecimenService {
 	
-	@Autowired
 	private ISpecimenDAO specimenDAO;
 	
 	@Override

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.plantplaces.dto.SpecimenDTO;
 import com.plantplaces.service.ISpecimenService;
+import com.plantplaces.dao.ISpecimenDAO;
 
 @Controller
 public class PlantPlacesController { 
@@ -20,13 +21,17 @@ public class PlantPlacesController {
 	@Autowired
 	private ISpecimenService specimenServiceStub;
 	
+	@GetMapping(value="/savespecimen")
+	public String saveSpecimen(SpecimenDTO specimenDTO) {
+		specimenDTO.setPlantId(73);
+		return "start";
+	}
+	
 	// Handle the /start endpoint
 	@GetMapping(value="/start")
-	@ResponseBody
-	public SpecimenDTO read(Model model) {
-		SpecimenDTO specimenDTO = specimenServiceStub.fetchById(43);
-		model.addAttribute("specimenDTO", specimenDTO);
-		return specimenDTO;
+	public String read(Model model) {
+		model.addAttribute("specimenDTO", new SpecimenDTO());
+		return "start";
 	}
 	
 	@GetMapping(value="/addspecimen")
@@ -56,8 +61,11 @@ public class PlantPlacesController {
 	}
 	
 	@GetMapping(value="/start", headers= {"content-type=text/json"})
-	public String readJSON() {
-		return "start";
+	@ResponseBody
+	public SpecimenDTO readJSON(Model model) {
+		SpecimenDTO specimenDTO = specimenServiceStub.fetchById(43);
+		model.addAttribute("specimenDTO", specimenDTO);
+		return specimenDTO;
 	}
 	
 	@PostMapping("/start")
