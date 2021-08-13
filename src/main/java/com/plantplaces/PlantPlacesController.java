@@ -91,6 +91,11 @@ public class PlantPlacesController {
 		return "start";
 	}
 	
+	@GetMapping("/sustainability")
+	public String sustainability() {
+		return "sustainability";
+	}
+	
 }
 
 
