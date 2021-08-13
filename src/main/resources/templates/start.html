@@ -3,22 +3,44 @@
 <head>
 <meta charset="ISO-8859-1" />
 <title>PlantPlaces.com virtual arboretum</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </head>
 <body>
-<form action="#" th:action="@{/searchPlants}" method="GET">
-	<input type="text" name="searchTerm" />
-	<button name="submit" type="submit" value="0">Search</button>
-</form>
-Welcome to PlantPlaces
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Welcome to Plant Places!</a>
+    <form class="d-flex" action="#" th:action="@{/searchPlants}" method="GET">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm">
+      <button class="btn btn-outline-success" type="submit" name="submit" value="0">Search</button>
+    </form>
+  </div>
+</nav>
+
 <br />
 Your specimen is:
 <p th:text="${specimenDTO}"/>
 
 <form action="#" th:action="@{/savespecimen}" th:object="${specimenDTO}" method="GET">
-	Latitude: <input type="text" name="latitude" th:field="*{latitude}"/><br/>
-	Longitude: <input type="text" name="longitude" th:field="*{longitude}"/><br/>
-	Description: <input type="text" name="description" th:field="*{description}"/><br/>
-	Plant: <input type="text" name="plantId" th:field="*{plantId}"/><br/>
+	<div class="input-group mb-3">
+  		<span class="input-group-text" id="basic-addon1">Latitude</span>
+  		<input type="text" class="form-control" placeholder="Latitude" aria-label="Username" aria-describedby="basic-addon1" name="latitude" th:field="*{latitude}">
+	</div>
+	<div class="input-group mb-3">
+  		<span class="input-group-text" id="basic-addon1">Longitude</span>
+  		<input type="text" class="form-control" placeholder="Longitude" aria-label="Username" aria-describedby="basic-addon1" name="longitude" th:field="*{longitude}">
+	</div>
+	<div class="input-group mb-3">
+  		<span class="input-group-text" id="basic-addon1">Description</span>
+  		<input type="text" class="form-control" placeholder="Description" aria-label="Username" aria-describedby="basic-addon1" name="description" th:field="*{description}">
+	</div>
+	<div class="input-group mb-3">
+  		<span class="input-group-text" id="basic-addon1">Plant ID</span>
+  		<input type="text" class="form-control" placeholder="plantId" aria-label="Username" aria-describedby="basic-addon1" name="plantId" th:field="*{plantId}">
+	</div>
 	<button name="submit" type="submit" value="0">Submit</button>
 </form>
 

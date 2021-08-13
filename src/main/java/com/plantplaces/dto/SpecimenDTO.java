@@ -39,6 +39,7 @@ public class SpecimenDTO {
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}
+	
 	@Override
 	public String toString() {
 		return specimenID + " " + latitude + " " + longitude + " " + description;

@@ -79,7 +79,7 @@ public class PlantPlacesController {
 	
 	@GetMapping("/searchPlants")
 	public String searchPlants(@RequestParam(value="searchTerm", required=false, defaultValue="") String searchTerm) {
-		String enhancedString = searchTerm + "";
+		String enhancedString = searchTerm;
 		List<PlantDTO> fetchPlants = specimenService.fetchPlants(enhancedString);
 		return "start";
 	}
